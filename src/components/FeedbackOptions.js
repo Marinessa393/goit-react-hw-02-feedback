@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
-import '../App.css';
-
-export default class FeedbackOptions extends Component {
-  addVote = e => {
-    this.props.onLeaveFeedback(e.target.getAttribute('name'));
-  };
-
-  render() {
-    const { options } = this.props;
-    return (
-      <>
-        <ul className="feedback__buttons">
-          {options.map(el => (
-            <li>
-              <button type="button" name={el} onClick={this.addVote}>
-                {el}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </>
-    );
-  }
+import React from 'react';
+export default function FeedbackOptions({ options, onLeaveFeedback }) {
+  return (
+    <>
+      <ul className="feedback__buttons">
+        {options.map(el => (
+          <li key={el}>
+            <button type="button" name={el} onClick={onLeaveFeedback}>
+              {el}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }

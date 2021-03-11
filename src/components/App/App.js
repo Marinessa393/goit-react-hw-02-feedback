@@ -1,9 +1,8 @@
-import '../App.css';
 import React, { Component } from 'react';
-import Statistics from './Statistics';
-import Section from './Section';
-import FeedbackOptions from './FeedbackOptions';
-import '../App.css';
+import Statistics from '../Statistics';
+import Section from '../Section';
+import FeedbackOptions from '../FeedbackOptions';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -12,9 +11,10 @@ class App extends Component {
     bad: 0,
   };
 
-  handleCount = value => {
+  handleCount = e => {
+    const name = e.currentTarget.name;
     this.setState(prevState => ({
-      [value]: prevState[value] + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -24,8 +24,8 @@ class App extends Component {
   };
 
   countPositiveFeedbackPercentage = () => {
-    const { good, neutral, bad } = this.state;
-    return parseInt((good / (good + neutral + bad)) * 100);
+    const { good } = this.state;
+    return parseInt((good / this.countTotalFeedback()) * 100);
   };
 
   render() {

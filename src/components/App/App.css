@@ -4,7 +4,7 @@ body {
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.8)
     ),
-    url(./img/coffee.jpg);
+    url(../../img/coffee.jpg);
   background-size: 100%;
 }
 
